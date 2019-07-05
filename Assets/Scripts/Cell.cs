@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Cell : MonoBehaviour
 {
-
 	public static Starter starter;
 	[HideInInspector]
 	public Vector2Int vec = Vector2Int.zero;
@@ -42,6 +41,23 @@ public class Cell : MonoBehaviour
 	{
 		if(this.ready && starter.stage==2)
 		{
+			if(starter.currghost.role)
+			{
+				if(starter.currplayer.Equals(starter.player1))
+				{
+					if(this.vec.y == 7)
+					{
+						starter.currplayer.Wygrana();
+					}
+				}
+				if(starter.currplayer.Equals(starter.player2))
+				{
+					if(this.vec.y == 0)
+					{
+						starter.currplayer.Wygrana();
+					}
+				}
+			}
 			starter.Readiness(false);
 			this.ghost = starter.currghost;
 			starter.currghost.field = this;

@@ -47,11 +47,38 @@ public class Ghost : MonoBehaviour
 			this.FancyColor();
 			starter.stage = 2;
 			starter.Readiness(true);
+		}else{
+			if(this.Equals(starter.currghost) && starter.stage == 2)
+			{
+				starter.stage = 1;
+				starter.Readiness(false);
+				starter.currghost = null;
+				this.StandardColor();
+			}
 		}
 		if(!starter.currplayer.Equals(this.player) && starter.stage == 2)
 		{
 			Cell cell = this.field;
 			starter.Readiness(false);
+			if(starter.currghost.role)
+			{
+				if(starter.currplayer.Equals(starter.player1))
+				{
+					if(this.field.vec.y == 7)
+					{
+						starter.currplayer.Wygrana();
+						return;
+					}
+				}
+				if(starter.currplayer.Equals(starter.player2))
+				{
+					if(this.field.vec.y == 0)
+					{
+						starter.currplayer.Wygrana();
+						return;
+					}
+				}
+			}
 			field.ghost = starter.currghost;
 			starter.currghost.field = field;
 			starter.currghost.StandardColor();
@@ -62,6 +89,7 @@ public class Ghost : MonoBehaviour
 			if(this.role == true)
 			{
 				this.player.Good--;
+				this.player.Change();
 				if(this.player.Good < 1) 
 				{
 					this.player.Przegrana();
@@ -70,6 +98,7 @@ public class Ghost : MonoBehaviour
 			if(this.role == false)
 			{
 				this.player.Bad--;
+				this.player.Change();
 				if(this.player.Bad < 1) 
 				{
 					this.player.Wygrana();
@@ -77,7 +106,6 @@ public class Ghost : MonoBehaviour
 			}
 			Destroy(this.gameObject);
 		}
-		
 	}
     
 	public void StandardColor()

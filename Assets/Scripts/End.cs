@@ -9,19 +9,28 @@ public class End : MonoBehaviour
 	
     void Start()
     {
-        this.GetComponent<BoxCollider2D>().enabled = false;
+        this.Disable();
     }
 
-    public void show(int i)
+    public void Show(int i)
 	{
-		this.GetComponent<BoxCollider2D>().enabled = true;
-		this.GetComponent<Text>().text = "Player "+i+"wins!!!";
+		this.Enable();
+		this.GetComponent<Text>().text = "Player "+i+" wins!!!";
 	}
 	
-	void OnMouseDown()
+	public void Hide()
+	{
+		this.Disable();
+		this.GetComponent<Text>().text = "";
+	}
+	 
+	private void Enable()
+	{
+		this.GetComponent<BoxCollider2D>().enabled = true;
+	}
+	
+	private void Disable()
 	{
 		this.GetComponent<BoxCollider2D>().enabled = false;
-		this.GetComponent<Text>().text = "";
-		this.starter.Play();
 	}
 }

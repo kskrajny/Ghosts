@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4353132083031496374}
   - component: {fileID: 5690025501830598056}
   - component: {fileID: 642925297446982123}
-  - component: {fileID: 165797605757027549}
+  - component: {fileID: 9203995216543309406}
   m_Layer: 0
   m_Name: End
   m_TagString: Untagged
@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4722114174600316017}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,7 +80,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: PLayer 1 wins!!!
---- !u!114 &165797605757027549
+--- !u!114 &9203995216543309406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,3 +92,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea1d6fca8182ba41a92af3757f5dc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  starter: {fileID: 0}

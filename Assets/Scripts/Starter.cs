@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class Starter : MonoBehaviour
 {
+	public End end;
+	public Wall wall;
     public Board board;
 	public Player player1;
 	public Player player2;
@@ -16,6 +19,7 @@ public class Starter : MonoBehaviour
 	
 	public void NextPlayer()
 	{
+		this.wall.Show();
 		this.currplayer.ToOpp();
 		if(currplayer.Equals(player1))
 		{
@@ -49,6 +53,8 @@ public class Starter : MonoBehaviour
 	
 	public void Play()
 	{
+		this.wall.Hide();
+		this.end.Hide();
 		this.player1.Setup();
 		this.player2.Setup();
 		player1.Create(this);
@@ -57,12 +63,11 @@ public class Starter : MonoBehaviour
 		this.currplayer = player1;
 		this.stage = -7;
 	}
-
-    void Start()
-    {
+	
+	void Start()
+	{
 		board.Create();
 		Ghost.starter = this;
 		Cell.starter = this;
-        this.Play();
-    }
+	}	
 }

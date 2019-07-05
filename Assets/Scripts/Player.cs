@@ -5,6 +5,7 @@ using System;
 
 public class Player : MonoBehaviour
 {
+	public Score score;
 	public End end;
 	public Board board;
 	public GameObject obj; 
@@ -13,6 +14,11 @@ public class Player : MonoBehaviour
 	public int Bad = 4; // how many bad ghosts alive
 	public int ID;
 	public int RolesToSet = 4;
+	
+	public void Change()
+	{
+		this.score.Change(this.Good, this.Bad);
+	}
 	
 	public void Setup()
 	{
@@ -26,6 +32,7 @@ public class Player : MonoBehaviour
 		Good = 4;
 		Bad = 4;
 		RolesToSet = 4;
+		this.score.Change(4, 4);
 	}
 	
 	public void ToOpp()
@@ -91,11 +98,11 @@ public class Player : MonoBehaviour
 	public void Przegrana()
 	{
 		int i = (this.ID+1)%2;
-		this.end.show(i);
+		this.end.Show(i);
 	}
 	
 	public void Wygrana()
 	{
-		this.end.show(this.ID+1);
+		this.end.Show(this.ID);
 	}
 }
